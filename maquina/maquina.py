@@ -19,10 +19,16 @@ def leer_cinta_inicial(cinta):
     return cinta1, cinta2
 
 def quitar(cinta1, cinta2, cinta3):
-    cinta1 = cinta1[4:]
+    cinta1 = cinta1[cinta1.find("1")+1:]
     cinta3 = cinta1[:3]
 
     return cinta1, cinta2, cinta3
+
+
+def alo(cinta1):
+    print(cinta3+"1"+cinta2[:1])
+    print(cinta1.find(cinta3+"1"+cinta2[:1]))
+    
 
 
 cinta1, cinta2 = leer_cinta_inicial(cinta_inicial)
@@ -48,6 +54,7 @@ print ("Cinta 2")
 print(cinta2)
 print ("Cinta 3")
 print(cinta3)
-print("-------------------------------------------------------------------")
-print ("PASO 4")
+#print("-------------------------------------------------------------------")
+#print ("PASO 4")
+#alo(cinta1)
 
