@@ -6,6 +6,7 @@ cinta1 = ""
 cinta2 = ""
 cinta3 = ""
 cinta4 = ""
+cintaz = ""
 
 for line in f:
     cinta_inicial = cinta_inicial + line
@@ -16,8 +17,9 @@ def leer_cinta_inicial(cinta):
     cinta1 = "q"+cinta[:cont+3]
     cinta2 = "q01"+cinta[cont+3:]
     cinta3 = "q"
+    cintaz = cinta[4:cont+3]
 
-    return cinta1, cinta2, cinta3
+    return cinta1, cinta2, cinta3, cintaz
 
 def quitar(cinta1, cinta2, cinta3):
     cinta3 = cinta3 + cinta1[cinta1.find("q")+1:cinta1.find("1")]
@@ -93,7 +95,7 @@ print("-------------------------------------------------------------------")
 print ("Cinta inicial")
 print (cinta_inicial)
 print("-------------------------------------------------------------------")
-cinta1, cinta2, cinta3 = leer_cinta_inicial(cinta_inicial)
+cinta1, cinta2, cinta3, cintaz = leer_cinta_inicial(cinta_inicial)
 print ("PASO 1 Y 2")
 print("-------------------------------------------------------------------")
 print ("Cinta 1")
@@ -116,27 +118,20 @@ print ("Cinta 2")
 print(cinta2)
 print ("Cinta 3")
 print(cinta3)
-#print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
 #print ("PASO 4")
 #alo(cinta1)
-"""
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
 
 
+print('CINTA Z')
+print(cintaz)
+print("-------------------------------------------------------------------")
 
-print('CINTA 1')
-print(cinta1)
-
-zonas = separar_zonas(cinta1)
+zonas = separar_zonas(cintaz)
 
 zonas_establecidas = crear_objetos(zonas)
 
 print("-------------------------------------------------------------------")
 
 for x in zonas_establecidas:
-    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)"""
+    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)
