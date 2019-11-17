@@ -13,15 +13,15 @@ for line in f:
 def leer_cinta_inicial(cinta):
 
     cont = cinta.find("111")
-    cinta1 = cinta[:cont+3]
-    cinta2 = "01"+cinta[cont+3:]
+    cinta1 = "q"+cinta[:cont+3]
+    cinta2 = "q01"+cinta[cont+3:]
+    cinta3 = "q"
 
-    return cinta1, cinta2
+    return cinta1, cinta2, cinta3
 
 def quitar(cinta1, cinta2, cinta3):
-    cinta1 = cinta1[cinta1.find("1")+1:]
-    cinta3 = cinta1[:3]
-
+    cinta3 = cinta3 + cinta1[cinta1.find("q")+1:cinta1.find("1")]
+    cinta1 = cinta1[cinta1.find("q")]+cinta1[cinta1.find("1")+1:]
     return cinta1, cinta2, cinta3
 
 
@@ -30,11 +30,8 @@ def alo(cinta1):
     print("Busca la transicion con estado "+cinta3+ " y letra "+cinta2[:1]+ " en la cinta 1")
     ss = len(cinta3+"1"+cinta2[:1])
     var = cinta1.find(cinta3+"1"+cinta2[:1])+ss
-    #cinta1 = cinta1[:var+2] + "q" + cinta1[var+1:]
-    #print("---------------------------hehe---------------")
     cinta1 = cinta1[:var+1]+"q"+cinta1[var+1:]
-    
-    #print(cinta1)
+
     return (cinta1)
 
 
@@ -92,14 +89,11 @@ def crear_objetos(lista_de_zonas):
     return lista_objetos
 
 
-
-cinta1, cinta2 = leer_cinta_inicial(cinta_inicial)
-
-
-"""print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
 print ("Cinta inicial")
 print (cinta_inicial)
 print("-------------------------------------------------------------------")
+cinta1, cinta2, cinta3 = leer_cinta_inicial(cinta_inicial)
 print ("PASO 1 Y 2")
 print("-------------------------------------------------------------------")
 print ("Cinta 1")
@@ -109,13 +103,13 @@ print(cinta2)
 print ("Cinta 3")
 print(cinta3)
 print("-------------------------------------------------------------------")
-print ("PASO 3")"""
+print ("PASO 3")
 
 
 cinta1, cinta2, cinta3 = quitar(cinta1, cinta2, cinta3)
 
 
-"""print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
 print ("Cinta 1")
 print(cinta1)
 print ("Cinta 2")
@@ -125,14 +119,16 @@ print(cinta3)
 #print("-------------------------------------------------------------------")
 #print ("PASO 4")
 #alo(cinta1)
-
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
-print("-------------------------------------------------------------------")
 """
+print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
+print("-------------------------------------------------------------------")
+
+
+
 print('CINTA 1')
 print(cinta1)
 
@@ -143,4 +139,4 @@ zonas_establecidas = crear_objetos(zonas)
 print("-------------------------------------------------------------------")
 
 for x in zonas_establecidas:
-    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)
+    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)"""
