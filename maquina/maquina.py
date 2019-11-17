@@ -68,10 +68,28 @@ def separar_zonas(cinta):
 
     return zonas
 
+class Zona:
+    def __init__(self, estado1, estado2, letra1, letra2, movimiento):
+        self.estado1 = estado1
+        self.estado2 = estado2
+        self.letra1 = letra1
+        self.letra2 = letra2
+        self.movimiento = movimiento
+
 def crear_objetos(lista_de_zonas):
     print("zonas")
+
+    lista_objetos = []
+
     for i in range(0, len(lista_de_zonas)):
-        print(lista_de_zonas[i])
+        separaciones = lista_de_zonas[i].split('1')
+        print(separaciones)
+
+        objeto = Zona(separaciones[0], separaciones[1], separaciones[2], separaciones[3], separaciones[4])
+
+        lista_objetos.append(objeto)
+
+    return lista_objetos
 
 
 
@@ -120,6 +138,9 @@ print(cinta1)
 
 zonas = separar_zonas(cinta1)
 
-crear_objetos(zonas)
+zonas_establecidas = crear_objetos(zonas)
 
+print("-------------------------------------------------------------------")
 
+for x in zonas_establecidas:
+    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)
