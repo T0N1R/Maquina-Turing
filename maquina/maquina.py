@@ -27,12 +27,23 @@ def quitar(cinta1, cinta2, cinta3):
     return cinta1, cinta2, cinta3
 
 
-def alo(cinta1):
+def alo(cinta1,zonas_establecidas):
+    ubc = str(cinta1.find("q"))
+    #print("Q se encuentra en la seccion " + ubc)
+    #print("Se buscara en la zona " + ubc)
+    est = zonas_establecidas[int(ubc)].estado1
+    let = zonas_establecidas[int(ubc)].letra1
+    #print("el estado es: "+est)
+    #print("la letra es: "+let)
+    print("Busca la transicion con estado "+est+ " y letra "+let+ " en la cinta 1")
     cinta1 = cinta1.replace("q","")
-    print("Busca la transicion con estado "+cinta3+ " y letra "+cinta2[:1]+ " en la cinta 1")
-    ss = len(cinta3+"1"+cinta2[:1])
-    var = cinta1.find(cinta3+"1"+cinta2[:1])+ss
-    cinta1 = cinta1[:var+1]+"q"+cinta1[var+1:]
+    ss = len(est+"1"+let+"1")
+    #print("**************************************")
+    #print(ss)
+    #print(cinta1)
+    #print("**************************************")
+    var = cinta1.find(est+"1"+let)+ss 
+    cinta1 = cinta1[:var]+"q"+cinta1[var:]
 
     return (cinta1)
 
@@ -68,7 +79,7 @@ def separar_zonas(cinta):
     return zonas
 
 class Zona:
-    def __init__(self, estado1, estado2, letra1, letra2, movimiento):
+    def __init__(self, estado1, letra1, estado2, letra2, movimiento):
         self.estado1 = estado1
         self.estado2 = estado2
         self.letra1 = letra1
@@ -76,20 +87,19 @@ class Zona:
         self.movimiento = movimiento
 
 def crear_objetos(lista_de_zonas):
-    print("zonas")
+    #print("zonas")
 
     lista_objetos = []
 
     for i in range(0, len(lista_de_zonas)):
         separaciones = lista_de_zonas[i].split('1')
-        print(separaciones)
+        #print(separaciones)
 
         objeto = Zona(separaciones[0], separaciones[1], separaciones[2], separaciones[3], separaciones[4])
 
         lista_objetos.append(objeto)
 
     return lista_objetos
-
 
 print("-------------------------------------------------------------------")
 print ("Cinta inicial")
@@ -107,9 +117,7 @@ print(cinta3)
 print("-------------------------------------------------------------------")
 print ("PASO 3")
 
-
 cinta1, cinta2, cinta3 = quitar(cinta1, cinta2, cinta3)
-
 
 print("-------------------------------------------------------------------")
 print ("Cinta 1")
@@ -118,20 +126,27 @@ print ("Cinta 2")
 print(cinta2)
 print ("Cinta 3")
 print(cinta3)
-print("-------------------------------------------------------------------")
-#print ("PASO 4")
-#alo(cinta1)
-
-
-print('CINTA Z')
-print(cintaz)
-print("-------------------------------------------------------------------")
+#print("-------------------------------------------------------------------")
+#print('CINTA Z')
+#print(cintaz)
+#print("-------------------------------------------------------------------")
 
 zonas = separar_zonas(cintaz)
 
 zonas_establecidas = crear_objetos(zonas)
 
-print("-------------------------------------------------------------------")
 
-for x in zonas_establecidas:
-    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)
+#for x in zonas_establecidas:
+#    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)
+print("-------------------------------------------------------------------")
+#print(zonas_establecidas[2].movimiento)
+print ("PASO 4")
+print("-------------------------------------------------------------------")
+cinta1 = alo(cinta1,zonas_establecidas)
+print ("Cinta 1")
+print(cinta1)
+print ("Cinta 2")
+print(cinta2)
+print ("Cinta 3")
+print(cinta3)
+print("-------------------------------------------------------------------")
