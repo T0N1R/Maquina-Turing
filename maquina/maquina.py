@@ -26,8 +26,16 @@ def quitar(cinta1, cinta2, cinta3):
 
 
 def alo(cinta1):
-    print(cinta3+"1"+cinta2[:1])
-    print(cinta1.find(cinta3+"1"+cinta2[:1]))
+    cinta1 = cinta1.replace("q","")
+    print("Busca la transicion con estado "+cinta3+ " y letra "+cinta2[:1]+ " en la cinta 1")
+    ss = len(cinta3+"1"+cinta2[:1])
+    var = cinta1.find(cinta3+"1"+cinta2[:1])+ss
+    #cinta1 = cinta1[:var+2] + "q" + cinta1[var+1:]
+    #print("---------------------------hehe---------------")
+    cinta1 = cinta1[:var+1]+"q"+cinta1[var+1:]
+    
+    #print(cinta1)
+    return (cinta1)
 
 
 def separar_zonas(cinta):
