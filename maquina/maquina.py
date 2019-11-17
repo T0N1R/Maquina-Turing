@@ -50,7 +50,7 @@ def separar_zonas(cinta):
     previa_zona = 0
     zonas = []
 
-    print("la cinta que se ingresa es: ", len(cinta))
+    #print("la cinta que se ingresa es: ", len(cinta))
 
     for i in range(0, len(cinta)):
 
@@ -59,7 +59,7 @@ def separar_zonas(cinta):
 
         if contador >= 6:
             separacion = cinta[previa_zona:(i+1)]
-            print(separacion)
+            #print(separacion)
             zonas.append(separacion)
 
             #evitamos que el siguiente sea 1
@@ -67,6 +67,12 @@ def separar_zonas(cinta):
             contador = 0
 
     return zonas
+
+def crear_objetos(lista_de_zonas):
+    print("zonas")
+    for i in range(0, len(lista_de_zonas)):
+        print(lista_de_zonas[i])
+
 
 
 cinta1, cinta2 = leer_cinta_inicial(cinta_inicial)
@@ -113,6 +119,7 @@ print('CINTA 1')
 print(cinta1)
 
 zonas = separar_zonas(cinta1)
-print("las zonas son:")
-print(zonas)
+
+crear_objetos(zonas)
+
 
