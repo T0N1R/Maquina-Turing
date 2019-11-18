@@ -1,4 +1,4 @@
-f = open("MT1.txt")
+f = open("MT4.txt")
 
 cinta_inicial = ""
 cinta1 = ""
@@ -46,7 +46,7 @@ def paso3(cinta1, cinta2, cinta3):
 def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
     cont = 0
     #CICLO MOMENTANEO MIENTRAS SE CREA LA CONDICION PARA SALIR DEL LOOP
-    while(cont < 7):
+    while(cinta3 != "q0"):
         #INICIO DE PASOS REPETITIVOS
 
         #PRIMERA PARTE DE LOS PASOS REPETITIVOS
@@ -164,7 +164,7 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
                         break
                 cinta2 = cinta2[:contaG]+"q"+cinta2[contaG:] 
         else:
-            print("No te moves")
+            prueba = 1
 
         
         #IMPRIME NUEVOS VALORES DE LAS CINTAS
@@ -179,6 +179,20 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
         cont +=1
     
     return cinta1,cinta2,cinta3
+
+def final(cinta1,cinta2,cinta3):
+    print("-------------------------------------------------------------------")
+    print("Borra la cinta 1 y copia la cinta 2 a la cinta 1")
+    cinta1 = cinta2
+    print ("Cinta 1")
+    print(cinta1)
+    print ("Cinta 2")
+    print(cinta2)
+    print ("Cinta 3")
+    print(cinta3)
+    print("")
+    
+    
     
 def separar_zonas(cinta):
 
@@ -239,3 +253,5 @@ cinta1, cinta2, cinta3 = paso3(cinta1, cinta2, cinta3)
 zonas = separar_zonas(cintaz)
 zonas_establecidas = crear_objetos(zonas)
 cinta1,cinta2,cinta3 = maquina(cinta1,cinta2,cinta3,zonas_establecidas)
+final(cinta1,cinta2,cinta3)
+
