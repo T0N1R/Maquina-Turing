@@ -46,7 +46,7 @@ def paso3(cinta1, cinta2, cinta3):
 def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
     cont = 0
     #CICLO MOMENTANEO MIENTRAS SE CREA LA CONDICION PARA SALIR DEL LOOP
-    while(cont < 3):
+    while(cont < 4):
         #INICIO DE PASOS REPETITIVOS
 
         #PRIMERA PARTE DE LOS PASOS REPETITIVOS
@@ -58,12 +58,17 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
         #OBTIENE LA LETRA CORRESPONDIENTE
         q1 = cinta2.find("q")+1
         enc = cinta2[q1:].find("1")
+        letraC1 = cinta2[q1:][:enc]+"1"
         letraC = cinta2[q1:][:enc]
         print("Busca la transicion con estado "+estadoC+ " y letra "+letraC+ " en la cinta 1")
         #MUEVE LA LETRA Q A SU POSICION NUEVA
         cinta1 = cinta1.replace("q","")
-        ss = len(estadoC+"1"+letraC+"1")
-        var = cinta1.find(estadoC+"1"+letraC)+ss
+        ss = len(estadoC+"1"+letraC1)
+        var = cinta1.find(estadoC+"1"+letraC1)+ss
+        #print("******************************************")
+        #print(cinta1[:var])
+        #print(cinta1[var:])
+        #print("******************************************")
         #IMPRIME NUEVOS VALORES DE LAS CINTAS
         cinta1 = cinta1[:var]+"q"+cinta1[var:]
         print ("Cinta 1")
@@ -73,9 +78,15 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
         print ("Cinta 3")
         print(cinta3)
         print("")
+        
         #SEGUNDA PARTE DE LOS PASOS REPETITIVOS
         print("Despues de la busqueda de la transicion con estado "+estadoC+ " y letra "+letraC+ " en la cinta 1")
 
+        """
+        SI LA TRANSICION = 0 STAY
+        SI LA TRANSICION = 00 LEFT
+        SI LA TRANSICION = 000 RIGHT"""
+        
         #NUEVO ESTADO DE CINTA 3
         encq = cinta1.find("q")
         cinta1N = cinta1[encq:]
