@@ -1,3 +1,10 @@
+"""
+    Logica matematica
+    Gustavo de Leon #
+    Antonio Reyes #17273
+"""
+
+
 f = open("MT1.txt")
 
 cinta_inicial = ""
