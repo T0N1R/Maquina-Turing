@@ -105,12 +105,42 @@ def separar_segmentos(cinta):
     print(" --- CINTA CON ZONAS --- ")
     print(nueva_secuencia_2)
     print(" --- CINTA SEPARADA EN ZONAS --- ")
+
+    correcto_secuencia_2 = True
+
     for x in zonas_establecidas:
         print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)
 
+    for x in zonas_establecidas:
+        if "1" in x.estado1:
+            correcto_secuencia_2 = False
+
+        if "1" in x.letra1:
+            correcto_secuencia_2 = False
+
+        if "1" in x.estado2:
+            correcto_secuencia_2 = False
+
+        if "1" in x.letra2:
+            correcto_secuencia_2 = False
+
+        if len(x.movimiento) > 3:
+            correcto_secuencia_2 = False
+
+    print("")
+    print("[[  Validez de esta cadena: ", correcto_secuencia_2, "  ]]")
+
     print("**************************************************")
     print(" --- CINTA CON LETRAS --- ")
+
     print(secuencia_3)
+
+    correcto_secuencia_3 = True
+
+    if "11" in secuencia_3:
+        correcto_secuencia_3 = False
+
+    print("[[  Validez de esta cadena: ", correcto_secuencia_3, "  ]]")
 
 
 separar_segmentos(cinta_inicial)
