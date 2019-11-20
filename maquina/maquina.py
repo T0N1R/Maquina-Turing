@@ -96,6 +96,7 @@ def maquina(cinta1,cinta2,cinta3):
             if(busquedaG == -1):
                 print("***********************")
                 print("NO ENCONTRÓ EL ESTADO")
+                print("ENTRO AL ESTADO DE RECHAZO")
                 print("***********************")
                 cinta3BOOLEAN = False
                 
