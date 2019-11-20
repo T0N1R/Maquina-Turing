@@ -1,4 +1,4 @@
-f = open("MT4.txt")
+f = open("MT1.txt")
 
 cinta_inicial = ""
 cinta1 = ""
@@ -11,11 +11,12 @@ for line in f:
     cinta_inicial = cinta_inicial + line
 
 def paso_inicial(cinta):
+    inicio = cinta.find("1")
     cont = cinta.find("111")
     cinta1 = "q"+cinta[:cont+3]
     cinta2 = "q01"+cinta[cont+3:]
     cinta3 = "q"
-    cintaz = cinta[4:cont+3]
+    cintaz = cinta[inicio+1:cont+3]
     print ("PASO 1 Y 2")
     print("-------------------------------------------------------------------")
     print ("Cinta 1")
@@ -43,10 +44,14 @@ def paso3(cinta1, cinta2, cinta3):
     return cinta1, cinta2, cinta3
 
 
-def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
+def maquina(cinta1,cinta2,cinta3):
+    anterior = ""
     cont = 0
+    seguirB = True
+    cinta3BOOLEAN = True
     #CICLO MOMENTANEO MIENTRAS SE CREA LA CONDICION PARA SALIR DEL LOOP
     while(cinta3 != "q0"):
+        seguirB = True
         #INICIO DE PASOS REPETITIVOS
 
         #PRIMERA PARTE DE LOS PASOS REPETITIVOS
@@ -69,26 +74,29 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
         var = cinta1.find(estadoC+"1"+letraC1)+ss
         cochinada = cinta1.find(estadoC+"1"+letraC1) #da la posicion de lo que se busca
         valor_anterior = cinta1[cochinada-2:cochinada] #Para saber si es estado1 siendo = a 11
+        valor_despues = cinta1[cochinada:cochinada+2]
+        
+        
+
 
         if(cochinada != 0):
-            #print("El estado no es el primero")
-            if(valor_anterior=="01"):
-                #print("esta mal")
-                anterior = cinta1[:var]
-                correccion = cinta1[var:]
-                ss = len(estadoC+"1"+letraC1)
-                var = correccion.find(estadoC+"1"+letraC1)+ss
-                correccion = correccion[:var]+"q"+correccion[var:]
-                cinta1 = anterior + correccion
-                #print("BUENA")
-            else:
-                #print("esta bien")
-                cinta1 = cinta1[:var]+"q"+cinta1[var:]
-        else:
+            busquedaG =cinta1.find("11"+estadoC+"1"+letraC+"1")
+            busquedaGG = len(estadoC+"1"+letraC+"1")
+            ponerQ = busquedaG+busquedaGG+2
+            cinta1 = cinta1[:ponerQ]+"q"+cinta1[ponerQ:]
+            if(busquedaG == -1):
+                print("***********************")
+                print("NO ENCONTRÓ EL ESTADO")
+                print("***********************")
+                cinta3BOOLEAN = False
+                
+                
+            
+        else:            
             cinta1 = cinta1[:var]+"q"+cinta1[var:]
-
+            
         #IMPRIME NUEVOS VALORES DE LAS CINTAS
-
+        
         salvacion = cinta1.find("q")
         salva = cinta1[salvacion:]
         num = salva.find("11")
@@ -100,6 +108,31 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
         busca4 = busca2[busca3+1:]
         movimiento = busca4
 
+        busca5 = cinta1[salvacion:]
+        busca6 = busca5.find("1")
+        busca7 = salvacion+busca6+1
+        busca8 = cinta1[busca7:]
+        busca9 = busca8.find("1")
+        
+        letra2 = busca8[:busca9]
+
+        cint2Q = cinta2.find("q")
+        busca10 = cinta2[cint2Q:]
+        busca11 = busca10.find("1")
+        
+        cambio = busca10[1:busca11]
+        posC = cinta2.find(cambio)
+        largo = len(cambio)
+        cinta2Ch = cinta2[cint2Q+1:]
+        largodeuno = cinta2Ch.find("1")
+        cambiar = cinta2Ch[:largodeuno]
+        cinta2A = cinta2[:cint2Q+1]
+        cinta2D = cinta2Ch[len(cambiar):]
+        cinta2 = cinta2A+letra2+cinta2D
+
+        
+        
+        
         print ("Cinta 1")
         print(cinta1)
         print ("Cinta 2")
@@ -122,6 +155,8 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
         encq1 =cinta1N.find("1")
         estadoN = cinta1N[:encq1]
         cinta3 = estadoN
+        if(cinta3BOOLEAN == False):
+            cinta3 = "q0"
 
         #REINICIO DE CINTA 1 
         cinta1 = cinta1.replace("q","")
@@ -139,7 +174,6 @@ def maquina(cinta1,cinta2,cinta3,zonas_establecidas):
         elif(movimiento == "00"):
             numq = cinta2.find("q")
             if(numq == 2):
-                print("hay que moverse")
                 cinta2 = cinta2.replace("q","")
                 cinta2 = "q"+cinta2
             else:
@@ -207,21 +241,23 @@ def separar_zonas(cinta):
     zonas = []
 
     #print("la cinta que se ingresa es: ", len(cinta))
-
+    print("****************************************************")
     for i in range(0, len(cinta)):
 
         if cinta[i] == "1":
             contador += 1
-
+        
         if contador >= 6:
             separacion = cinta[previa_zona:(i+1)]
-            #print(separacion)
+            
+            print(separacion)
+            
             zonas.append(separacion)
 
             #evitamos que el siguiente sea 1
             previa_zona = i + 1
             contador = 0
-
+    print("****************************************************")
     return zonas
 
 class Zona:
@@ -233,12 +269,13 @@ class Zona:
         self.movimiento = movimiento
 
 def crear_objetos(lista_de_zonas):
-    #print("zonas")
+    print("zonas")
 
     lista_objetos = []
 
     for i in range(0, len(lista_de_zonas)):
         separaciones = lista_de_zonas[i].split('1')
+        print(separaciones)
         objeto = Zona(separaciones[0], separaciones[1], separaciones[2], separaciones[3], separaciones[4])
         lista_objetos.append(objeto)
 
@@ -250,8 +287,11 @@ print (cinta_inicial)
 print("-------------------------------------------------------------------")
 cinta1, cinta2, cinta3, cintaz = paso_inicial(cinta_inicial)
 cinta1, cinta2, cinta3 = paso3(cinta1, cinta2, cinta3)
-zonas = separar_zonas(cintaz)
-zonas_establecidas = crear_objetos(zonas)
-cinta1,cinta2,cinta3 = maquina(cinta1,cinta2,cinta3,zonas_establecidas)
+cinta1,cinta2,cinta3 = maquina(cinta1,cinta2,cinta3)
 final(cinta1,cinta2,cinta3)
+#zonas = separar_zonas(cintaz)
+#zonas_establecidas = crear_objetos(zonas)
+#print("*****************************************************************")
+#for x in zonas_establecidas:
+#    print(x.estado1, x.letra1, x.estado2, x.letra2, x.movimiento)
 
