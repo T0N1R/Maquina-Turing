@@ -7,7 +7,7 @@
     Antonio Reyes #17273
 """
 
-f = open("MT1.txt")
+f = open("MT4.txt")
 
 cinta_inicial = ""
 cinta1 = ""
@@ -141,17 +141,18 @@ def maquina(cinta1,cinta2,cinta3):
 
         
         
-        
-        print ("Cinta 1")
-        print(cinta1)
-        print ("Cinta 2")
-        print(cinta2)
-        print ("Cinta 3")
-        print(cinta3)
-        print("")
+        if(cinta3BOOLEAN == True):
+            print ("Cinta 1")
+            print(cinta1)
+            print ("Cinta 2")
+            print(cinta2)
+            print ("Cinta 3")
+            print(cinta3)
+            print("")
         
         #SEGUNDA PARTE DE LOS PASOS REPETITIVOS
-        print("Despues de la busqueda de la transicion con estado "+estadoC+ " y letra "+letraC+ " en la cinta 1")
+        if(cinta3BOOLEAN == True):
+            print("Despues de la busqueda de la transicion con estado "+estadoC+ " y letra "+letraC+ " en la cinta 1")
 
         """
         SI LA TRANSICION = 0 STAY
@@ -211,13 +212,14 @@ def maquina(cinta1,cinta2,cinta3):
 
         
         #IMPRIME NUEVOS VALORES DE LAS CINTAS
-        print ("Cinta 1")
-        print(cinta1)
-        print ("Cinta 2")
-        print(cinta2)
-        print ("Cinta 3")
-        print(cinta3)
-        print("")
+        if(cinta3BOOLEAN == True):
+            print ("Cinta 1")
+            print(cinta1)
+            print ("Cinta 2")
+            print(cinta2)
+            print ("Cinta 3")
+            print(cinta3)
+            print("")
         #CONTADOR MOMENTANEO MIENTRAS SE CREA CONDICION DE FINALIZACION
         cont +=1
     
