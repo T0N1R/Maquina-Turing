@@ -1,6 +1,6 @@
 """
     Logica matematica
-    Gustavo de Leon #
+    Gustavo de Leon #17085
     Antonio Reyes #17273
 """
 
