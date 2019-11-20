@@ -1,3 +1,12 @@
+
+"""
+    Logica matematica
+    Proyecto Final - Maquina de Turing
+    20/11/2019
+    Gustavo de Leon #17085
+    Antonio Reyes #17273
+"""
+
 f = open("MT1.txt")
 
 cinta_inicial = ""
